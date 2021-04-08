@@ -25,9 +25,12 @@ function init(data) {
       .attr('href', currentURL)
       .text(data.slug);
 
-    var body = $("div.body");
-    if (!body.length) {
-        body = $("div.document");
+    var selectors = ['[role=main]', 'main', 'div.body', 'div.document'];
+    for (var i = 0; i < selectors.length; i++) {
+        var body = $(selectors[i]);
+        if (body.length) {
+            break;
+        }
     }
     body.prepend(warning);
 }
